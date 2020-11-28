@@ -71,7 +71,7 @@ def exitt():
    exit()
 
 def open_app():
-    filename= filedialog.askopenfilename(parent=root,initialdir="/home/sourav/",title="Select File",filetypes=[
+    filename= filedialog.askopenfilename(parent=root,initialdir="/",title="Select File",filetypes=[
                     ("all video format", ".mp4"),
                     ("all video format", ".flv"),
                     ("all video format", ".avi"),
