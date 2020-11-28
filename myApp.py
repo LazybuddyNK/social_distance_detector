@@ -6,12 +6,13 @@ import tkinter.messagebox
 import datetime
 import os
 from tkinter import filedialog
+from PIL import Image,ImageTk,ImageOps
 
 current_date_and_time = datetime.datetime.now()
 
 current_date_and_time_string = str(current_date_and_time)
 
-
+file_path= os.getcwd()
 
 
 
@@ -21,8 +22,23 @@ frame = Frame(root, relief=RIDGE, borderwidth=2)
 frame.pack(fill=BOTH,expand=1)
 root.title('Social_detection_detector')
 frame.config(background='light blue')
-label = Label(frame, text="Social_detection_detector",bg='light blue',font=('Times 35 bold'))
+label = Label(frame, text="Detector",bg='light blue',font=('Times 35 bold'))
 label.pack(side=TOP)
+
+# filename = PhotoImage(file=file_path + "/demo.png")
+# background_label = Label(frame,image=filename)
+# # background_label.pack(side=TOP)
+# background_label.pack(fill=BOTH, expand=YES)
+
+image = Image.open(file_path + "/demo.png")
+image = ImageOps.fit(image, (500, 570))
+image = ImageTk.PhotoImage(image)
+test = Label(frame, image = image, bg="#ffb8e1")
+test.pack()
+
+
+
+
 
 
 def hel():
@@ -41,7 +57,7 @@ menu = Menu(root)
 root.config(menu=menu)
 
 subm1 = Menu(menu)
-menu.add_cascade(label="Tools",menu=subm1)
+menu.add_cascade(label="Help",menu=subm1)
 subm1.add_command(label="Open CV Docs",command=hel)
 
 subm2 = Menu(menu)
