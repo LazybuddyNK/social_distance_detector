@@ -37,8 +37,7 @@ configPath = os.path.sep.join([config.MODEL_PATH, CONFIG_PATH])
 
 
 
-# load our YOLO object detector trained on COCO dataset (80 classes)
-print("[INFO] loading YOLO from disk...")
+# load our YOLO object detector trained on COCO dataset (80 classes
 net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 # check if we are going to use GPU
 if config.USE_GPU:
@@ -129,7 +128,7 @@ while True:
 	# screen
 	if args["display"] > 0:
 		# show the output frame
-		cv2.imshow("Frame", frame)
+		cv2.imshow("Social Distance Detection", frame)
 		key = cv2.waitKey(1) & 0xFF
 		# if the `q` key was pressed, break from the loop
 		if key == ord("q"):

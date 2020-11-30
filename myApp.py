@@ -7,6 +7,7 @@ import datetime
 import os
 from tkinter import filedialog
 from PIL import Image,ImageTk,ImageOps
+from tkinter import ttk 
 
 current_date_and_time = datetime.datetime.now()
 
@@ -20,15 +21,11 @@ root=Tk()
 root.geometry('500x570')
 frame = Frame(root, relief=RIDGE, borderwidth=2)
 frame.pack(fill=BOTH,expand=1)
-root.title('Social_detection_detector')
+root.title('Social Distance Detector')
 frame.config(background='light blue')
 label = Label(frame, text="Detector",bg='light blue',font=('Times 35 bold'))
 label.pack(side=TOP)
 
-# filename = PhotoImage(file=file_path + "/demo.png")
-# background_label = Label(frame,image=filename)
-# # background_label.pack(side=TOP)
-# background_label.pack(fill=BOTH, expand=YES)
 
 image = Image.open(file_path + "/demo.png")
 image = ImageOps.fit(image, (500, 570))
@@ -45,25 +42,36 @@ def hel():
    help(cv2)
 
 def Contri():
-   tkinter.messagebox.showinfo("Contributors","Sourav Sharma")
+   tkinter.messagebox.showinfo("Contributor","Sourav Sharma")
 
 
 def anotherWin():
-   tkinter.messagebox.showinfo("About",'Social Detection Detector version v1.0\n Made Using\n-OpenCV\n-Numpy\n-Tkinter\n In Python 3')
+   tkinter.messagebox.showinfo("About",'Social Distance Detector version v1.0\n Made Using\n-OpenCV\n-Numpy\n-Tkinter\n In Python 3')
                                     
    
+
+def confo():
+   #Enter configuration file here
+   pass
 
 menu = Menu(root)
 root.config(menu=menu)
 
-subm1 = Menu(menu)
-menu.add_cascade(label="Help",menu=subm1)
-subm1.add_command(label="Open CV Docs",command=hel)
+#Tools
+subm1 = Menu(menu,tearoff=False)
+menu.add_cascade(label="Tools",menu=subm1)
+subm1.add_command(label="Set Configuration",command=confo)
 
-subm2 = Menu(menu)
-menu.add_cascade(label="About",menu=subm2)
-subm2.add_command(label="Social Distance Detection",command=anotherWin)
-subm2.add_command(label="Contributors",command=Contri)
+#Help
+subm2 = Menu(menu,tearoff=False)
+menu.add_cascade(label="Help",menu=subm2)
+subm2.add_command(label="Open CV Docs",command=hel)
+
+#About
+subm3 = Menu(menu,tearoff=False)
+menu.add_cascade(label="About",menu=subm3)
+subm3.add_command(label="Social Distance Detection",command=anotherWin)
+subm3.add_command(label="Contributors",command=Contri)
 
 
 
